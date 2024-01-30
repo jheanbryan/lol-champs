@@ -1,0 +1,54 @@
+header{
+    background-color: #333;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+header h1 {
+    font-weight: normal;
+    font-family: beaufort-regular;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 900px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+.card{
+    max-width: 150px;
+    width: 100%;
+    background-color: #000;
+    color: rgb(208, 168, 92);
+    cursor: pointer;
+    font-family: beaufort-bold;
+}
+.card:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+.div-img{
+    max-width: 100%;
+}
+.img{
+    width: 100%;
+}
+.div-champion-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px;
+}
+.champion-name{
+    text-transform: uppercase;
+}

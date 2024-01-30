@@ -1,0 +1,18 @@
+@font-face {
+    font-family: beaufort-bold;
+    src: url(fonts/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: beaufort-medium;
+    src: url(fonts/BeaufortforLOL-Medium.ttf);
+}
+
+@font-face {
+    font-family: beaufort-regular;
+    src: url(fonts/BeaufortforLOL-Regular.ttf);
+}
+@font-face {
+    font-family: beaufort-italic;
+    src: url(fonts/BeaufortforLOL-Italic.ttf);
+}
