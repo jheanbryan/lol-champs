@@ -1,0 +1,15 @@
+@keyframes goToLeft {
+    from{}
+    to{
+        transform: translateX(-100%);
+        display: none;
+    }
+}
+
+@keyframes goToRight {
+    from{}
+    to{
+        display: flex;
+        transform: translateX(0);
+    }
+}
