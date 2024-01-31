@@ -7,7 +7,9 @@
 }
 
 @keyframes goToRight {
-    from{}
+    from{
+        transform: translateX(-100%);
+    }
     to{
         display: flex;
         transform: translateX(0);

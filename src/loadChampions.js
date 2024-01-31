@@ -1,4 +1,6 @@
+import { loadChampionInModal } from "./modal.js";
 let championsList;
+const main = document.querySelector('main')
 
 //get champions list from api
 async function getChampionsList() {
@@ -20,7 +22,6 @@ async function getChampionsList() {
 async function loadChampionsList() {
   try {
     championsList = await getChampionsList();
-    //console.log(championsList);
 
     for (const championName in championsList) {
       const championInfo = championsList[championName];
@@ -28,7 +29,8 @@ async function loadChampionsList() {
     };
 
     const cardsList = document.querySelectorAll('.card')
-    addEventInCards(cardsList)
+    addEventInCards(cardsList);
+
 
   } catch (error) {
     console.error('Error:', error);
@@ -54,7 +56,6 @@ function writeCardInHtml(championInfo) {
 }
 
 function addEventInCards(cardsList) {
-  const main = document.querySelector('main')
 
   cardsList.forEach(card => {
     card.addEventListener('click', () => {  
@@ -62,17 +63,72 @@ function addEventInCards(cardsList) {
     
       main.classList.add('goToLeft');
       openModal(championNameSelected);
+      console.log('abrir')
     });
   });
 }
 
-function openModal(championName) {
-  console.log(championsList[championName]);
-  
-  const modal = `
-    
-  `;
+async function openModal(championName) {
+  const containerModal = document.querySelector('.container-modal');
+  const modalDiv = document.querySelector('.modal-div');
+  const championData = await getChampionData(championName);
+  containerModal.innerHTML += loadChampionInModal(championData, championName);
+
+  eventInArrowReturn();
 }
 
+async function getChampionData(championId) {
+  let url = `https://ddragon.leagueoflegends.com/cdn/14.2.1/data/pt_BR/champion/${championId}.json`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const championData = data.data;
+    return championData;
+
+
+  } catch (error) {
+      console.error('Error fetching champions list:', error);
+      throw error;
+  
+  }
+}
+
+function closeModal() {
+  const modalDiv = document.querySelector('.modal-div');
+  modalDiv.classList.add('none');
+}
+
+function eventInArrowReturn() {
+
+  console.log('evento para seta arrow');
+  let arrowReturn = document.querySelector('.arrow-return');
+
+  if (arrowReturn) {
+    arrowReturn.removeEventListener('click', clickInArrow);
+    arrowReturn.addEventListener('click', clickInArrow);
+  } else {
+    console.error('Elemento com a classe .arrow-return não encontrado.');
+  }
+}
+
+function clickInArrow() {
+  closeModal();
+  console.log('clicko');
+
+  main.classList.remove('goToLeft');
+  main.classList.add('goToRight');
+  setTimeout(() => {
+    main.classList.remove('goToRight');  
+  }, 1001);
+}
+
+
+//pasiva
+//https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/Anivia_P.png
+// data.passive.image.full
+
+//https://ddragon.leagueoflegends.com/cdn/14.2.1/data/pt_BR/champion/Darius.json
+//https://ddragon.leagueoflegends.com/cdn/14.2.1/img/spell/FlashFrost.png
 loadChampionsList();
 
