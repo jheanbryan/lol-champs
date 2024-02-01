@@ -72,6 +72,7 @@ async function openModal(championName) {
   const containerModal = document.querySelector('.container-modal');
   const modalDiv = document.querySelector('.modal-div');
   const championData = await getChampionData(championName);
+  containerModal.innerHTML = '';
   containerModal.innerHTML += loadChampionInModal(championData, championName);
 
   eventInArrowReturn();
@@ -100,16 +101,10 @@ function closeModal() {
 }
 
 function eventInArrowReturn() {
-
   console.log('evento para seta arrow');
-  let arrowReturn = document.querySelector('.arrow-return');
+  let arrowReturn = document.getElementById('arrowReturn');
+  arrowReturn.addEventListener('click', clickInArrow);
 
-  if (arrowReturn) {
-    arrowReturn.removeEventListener('click', clickInArrow);
-    arrowReturn.addEventListener('click', clickInArrow);
-  } else {
-    console.error('Elemento com a classe .arrow-return não encontrado.');
-  }
 }
 
 function clickInArrow() {

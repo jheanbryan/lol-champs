@@ -5,7 +5,7 @@ function loadChampionInModal(objectChampion, championName) {
     const urlSpells = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/spell/';
     const modal = `
         <div class="modal-div">
-            <div class="arrow-return">
+            <div class="arrow-return" id="arrowReturn">
                 <img src="assets/img/arrow-left-solid.svg" alt="seta para esquerda" class="img">
             </div>
 
