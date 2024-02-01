@@ -20,27 +20,27 @@ function loadChampionInModal(objectChampion, championName) {
                 </div>
 
                 <div class="row-skills">
-                    <div class="div-img div-img-skill">
+                    <div class="div-img div-img-skill passive-image">
                         <img src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/${champion.passive.image.full}" alt="" class="img img-skill selected">
-                        <span>Passiva</span>
+                        <span class="passive-txt">Passiva</span>
                     </div>
 
-                    <div class="div-img div-img-skill">
+                    <div class="div-img div-img-skill q-image">
                         <img src="${urlSpells + champion.spells[0].image.full}" alt="" class="img img-skill">
                         <span>Q</span>
                     </div>
 
-                    <div class="div-img div-img-skill">
+                    <div class="div-img div-img-skill w-image">
                         <img src="${urlSpells + champion.spells[1].image.full}" alt="" class="img img-skill">
                         <span>W</span>
                     </div>
 
-                    <div class="div-img div-img-skill">
+                    <div class="div-img div-img-skill e-image">
                         <img src="${urlSpells + champion.spells[2].image.full}" alt="" class="img img-skill">
                         <span>E</span>
                     </div>
 
-                    <div class="div-img div-img-skill">
+                    <div class="div-img div-img-skill r-image">
                         <img src="${urlSpells + champion.spells[3].image.full}" alt="" class="img img-skill">
                         <span>R</span>
                     </div>
@@ -56,21 +56,5 @@ function loadChampionInModal(objectChampion, championName) {
 
     return modal
 }
-
-async function getSpellsImage() {
-    let url = `https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/Darius_Icon_Hemorrhage.png`;
-  
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      const spells = data.data;
-  
-    } catch (error) {
-        console.error('Error fetching champions list:', error);
-        throw error;
-    
-    }
-}
-  
   
 export { loadChampionInModal };

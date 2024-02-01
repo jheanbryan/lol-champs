@@ -1,6 +1,25 @@
 import { loadChampionInModal } from "./modal.js";
 let championsList;
 const main = document.querySelector('main')
+const championSpells = {
+  passive: null,
+  q: {
+    name: null,
+    attribute: null
+  },
+  w: {
+    name: null,
+    attribute: null
+  },
+  e: {
+    name: null,
+    attribute: null
+  },
+  r: {
+    name: null,
+    attribute: null
+  },
+}
 
 //get champions list from api
 async function getChampionsList() {
@@ -69,12 +88,52 @@ function addEventInCards(cardsList) {
 
 async function openModal(championName) {
   const containerModal = document.querySelector('.container-modal');
-  const modalDiv = document.querySelector('.modal-div');
   const championData = await getChampionData(championName);
+
   containerModal.innerHTML = '';
   containerModal.innerHTML += loadChampionInModal(championData, championName);
 
   eventInArrowReturn();
+  loadChampionSpells(championData[championName]);
+  eventInSpellsImages();
+}
+
+function eventInSpellsImages() {
+  const passiveImage = document.querySelector('.passive-image');
+  const passiveTxt = document.querySelector('.passive-txt');
+  const qImage = document.querySelector('.q-image');
+  const wImage = document.querySelector('.w-image');
+  const eImage = document.querySelector('.e-image');
+  const rImage = document.querySelector('.r-image');
+
+  const skillName = document.querySelector('.skill-name');
+  const skillDescription = document.querySelector('.info-skill');
+
+  passiveImage.addEventListener('click', () => {
+    skillName.innerHTML = 'Passiva';
+    skillDescription.innerHTML = championSpells.passive;
+  })
+
+  qImage.addEventListener('click', () => {
+    skillName.innerHTML = championSpells.q.name;
+    skillDescription.innerHTML = championSpells.q.attribute;
+
+  })
+
+  wImage.addEventListener('click', () => {
+    skillName.innerHTML = championSpells.w.name;
+    skillDescription.innerHTML = championSpells.w.attribute;
+  })
+
+  eImage.addEventListener('click', () => {
+    skillName.innerHTML = championSpells.e.name;
+    skillDescription.innerHTML = championSpells.e.attribute;
+  })
+
+  rImage.addEventListener('click', () => {
+    skillName.innerHTML = championSpells.r.name;
+    skillDescription.innerHTML = championSpells.r.attribute;
+  })
 }
 
 async function getChampionData(championId) {
@@ -115,6 +174,25 @@ function clickInArrow() {
   }, 1001);
 }
 
+function loadChampionSpells(dataChampionSpells) {
+  const spellsList = dataChampionSpells.spells;
+
+  championSpells.q.name = spellsList[0].name;
+  championSpells.q.attribute = spellsList[0].tooltip;
+
+  championSpells.w.name = spellsList[1].name;
+  championSpells.w.attribute = spellsList[1].tooltip;
+
+  championSpells.e.name = spellsList[2].name;
+  championSpells.e.attribute = spellsList[2].tooltip;
+
+  championSpells.r.name = spellsList[3].name;
+  championSpells.r.attribute = spellsList[3].tooltip;
+
+  championSpells.passive = dataChampionSpells.passive.description;
+}
+
+
 
 //pasiva
 //https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/Anivia_P.png
@@ -123,4 +201,3 @@ function clickInArrow() {
 //https://ddragon.leagueoflegends.com/cdn/14.2.1/data/pt_BR/champion/Darius.json
 //https://ddragon.leagueoflegends.com/cdn/14.2.1/img/spell/FlashFrost.png
 loadChampionsList();
-
