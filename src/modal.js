@@ -1,6 +1,5 @@
 function loadChampionInModal(objectChampion, championName) {
     const champion = objectChampion[championName];
-    console.log(champion)
 
     const urlSpells = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/spell/';
     const modal = `
@@ -16,7 +15,7 @@ function loadChampionInModal(objectChampion, championName) {
             <div class="championInfo">
                 <div class="basic-info">
                     <h2>${champion.name}</h2>
-                    <span>${champion.title}</span>
+                    <span>"${champion.title}"</span>
                     <p>${champion.lore}</p>
                 </div>
 

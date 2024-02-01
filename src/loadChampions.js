@@ -63,7 +63,6 @@ function addEventInCards(cardsList) {
     
       main.classList.add('goToLeft');
       openModal(championNameSelected);
-      console.log('abrir')
     });
   });
 }
@@ -101,7 +100,6 @@ function closeModal() {
 }
 
 function eventInArrowReturn() {
-  console.log('evento para seta arrow');
   let arrowReturn = document.getElementById('arrowReturn');
   arrowReturn.addEventListener('click', clickInArrow);
 
@@ -109,7 +107,6 @@ function eventInArrowReturn() {
 
 function clickInArrow() {
   closeModal();
-  console.log('clicko');
 
   main.classList.remove('goToLeft');
   main.classList.add('goToRight');
