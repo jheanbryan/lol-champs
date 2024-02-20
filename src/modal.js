@@ -21,27 +21,27 @@ function loadChampionInModal(objectChampion, championName) {
 
                 <div class="row-skills">
                     <div class="div-img div-img-skill passive-image">
-                        <img src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/${champion.passive.image.full}" alt="" class="img img-skill selected">
+                        <img src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/${champion.passive.image.full}" alt="" class="img img-skill selected p">
                         <span class="passive-txt">Passiva</span>
                     </div>
 
                     <div class="div-img div-img-skill q-image">
-                        <img src="${urlSpells + champion.spells[0].image.full}" alt="" class="img img-skill">
+                        <img src="${urlSpells + champion.spells[0].image.full}" alt="" class="img img-skill q">
                         <span>Q</span>
                     </div>
 
                     <div class="div-img div-img-skill w-image">
-                        <img src="${urlSpells + champion.spells[1].image.full}" alt="" class="img img-skill">
+                        <img src="${urlSpells + champion.spells[1].image.full}" alt="" class="img img-skill w">
                         <span>W</span>
                     </div>
 
                     <div class="div-img div-img-skill e-image">
-                        <img src="${urlSpells + champion.spells[2].image.full}" alt="" class="img img-skill">
+                        <img src="${urlSpells + champion.spells[2].image.full}" alt="" class="img img-skill e">
                         <span>E</span>
                     </div>
 
                     <div class="div-img div-img-skill r-image">
-                        <img src="${urlSpells + champion.spells[3].image.full}" alt="" class="img img-skill">
+                        <img src="${urlSpells + champion.spells[3].image.full}" alt="" class="img img-skill r">
                         <span>R</span>
                     </div>
                 </div>

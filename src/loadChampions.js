@@ -1,6 +1,8 @@
 import { loadChampionInModal } from "./modal.js";
 let championsList;
-const main = document.querySelector('main')
+const main = document.querySelector('main');
+const containerAnimation = document.querySelector('.container-animation');
+
 const championSpells = {
   passive: null,
   q: {
@@ -49,7 +51,7 @@ async function loadChampionsList() {
 
     const cardsList = document.querySelectorAll('.card')
     addEventInCards(cardsList);
-
+    closeAnimation();
 
   } catch (error) {
     console.error('Error:', error);
@@ -82,6 +84,7 @@ function addEventInCards(cardsList) {
     
       main.classList.add('goToLeft');
       openModal(championNameSelected);
+      openAnimation();
     });
   });
 }
@@ -100,7 +103,6 @@ async function openModal(championName) {
 
 function eventInSpellsImages() {
   const passiveImage = document.querySelector('.passive-image');
-  const passiveTxt = document.querySelector('.passive-txt');
   const qImage = document.querySelector('.q-image');
   const wImage = document.querySelector('.w-image');
   const eImage = document.querySelector('.e-image');
@@ -112,28 +114,39 @@ function eventInSpellsImages() {
   passiveImage.addEventListener('click', () => {
     skillName.innerHTML = 'Passiva';
     skillDescription.innerHTML = championSpells.passive;
+    removeBorderInImage();
+    addBorderInImage(document.querySelector('.p'));
   })
 
   qImage.addEventListener('click', () => {
     skillName.innerHTML = championSpells.q.name;
     skillDescription.innerHTML = championSpells.q.attribute;
+    removeBorderInImage();
+    addBorderInImage(document.querySelector('.q'));
 
   })
 
   wImage.addEventListener('click', () => {
     skillName.innerHTML = championSpells.w.name;
     skillDescription.innerHTML = championSpells.w.attribute;
+    removeBorderInImage();
+    addBorderInImage(document.querySelector('.w'));
   })
 
   eImage.addEventListener('click', () => {
     skillName.innerHTML = championSpells.e.name;
     skillDescription.innerHTML = championSpells.e.attribute;
+    removeBorderInImage();
+    addBorderInImage(document.querySelector('.e'));
   })
 
   rImage.addEventListener('click', () => {
     skillName.innerHTML = championSpells.r.name;
     skillDescription.innerHTML = championSpells.r.attribute;
+    removeBorderInImage();
+    addBorderInImage(document.querySelector('.r'));
   })
+
 }
 
 async function getChampionData(championId) {
@@ -192,7 +205,36 @@ function loadChampionSpells(dataChampionSpells) {
   championSpells.passive = dataChampionSpells.passive.description;
 }
 
+function removeBorderInImage() {
+  const arrayImages = document.querySelectorAll('.img-skill');
 
+  arrayImages.forEach((element, index) => {
+    if (element.className.includes('selected')) {
+      element.classList.remove('selected');
+    }
+  });
+}
+
+function addBorderInImage(element) {
+  element.classList.add('selected');
+}
+
+/*
+function openAnimation() {
+  containerAnimation.classList.remove()
+  containerAnimation.classList.add('flex');
+  containerAnimation.classList.add('flex');
+}
+
+function closeAnimation() {
+  containerAnimation.classList.add('deleteAnimation');
+
+  setTimeout(() => {
+    containerAnimation.classList.remove('flex');
+    containerAnimation.classList.add('none');    
+  }, 1001);
+}
+*/
 
 //pasiva
 //https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/Anivia_P.png

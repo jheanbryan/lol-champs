@@ -138,7 +138,7 @@ main{
     border-radius: 50%;
 }
 .selected{
-    border: 1.5px solid rgb(208, 168, 92);
+    border: 2px solid rgb(208, 168, 92);
 }
 .skills-info{
     margin-top: 25px;
@@ -149,4 +149,21 @@ main{
 }
 .flex{
     display: flex;
+}
+.container-animation{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    background-color: rgb(128, 128, 128, 0.92);
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-animation span{
+    font-size: 34px;
+    transform: translateY(-20px);
+}
+.deleteAnimation{
+    animation: opacity 0.5s forwards;
 }
