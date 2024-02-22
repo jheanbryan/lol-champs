@@ -151,19 +151,18 @@ main{
     display: flex;
 }
 .container-animation{
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    background-color: rgb(128, 128, 128, 0.92);
-    height: 100vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.80);
+    height: 100vh;
+    width: 100vw;
 }
 .container-animation span{
     font-size: 34px;
     transform: translateY(-20px);
-}
-.deleteAnimation{
-    animation: opacity 0.5s forwards;
+    color: #fff ;
 }

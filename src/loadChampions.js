@@ -22,6 +22,7 @@ const championSpells = {
     attribute: null
   },
 }
+openAnimation()
 
 //get champions list from api
 async function getChampionsList() {
@@ -80,11 +81,11 @@ function addEventInCards(cardsList) {
 
   cardsList.forEach(card => {
     card.addEventListener('click', () => {  
+      openAnimation();
       let championNameSelected = card.classList[1];
     
       main.classList.add('goToLeft');
       openModal(championNameSelected);
-      openAnimation();
     });
   });
 }
@@ -99,6 +100,11 @@ async function openModal(championName) {
   eventInArrowReturn();
   loadChampionSpells(championData[championName]);
   eventInSpellsImages();
+
+  
+  setTimeout(() => {
+    closeAnimation();
+  }, 1001);
 }
 
 function eventInSpellsImages() {
@@ -219,22 +225,16 @@ function addBorderInImage(element) {
   element.classList.add('selected');
 }
 
-/*
 function openAnimation() {
-  containerAnimation.classList.remove()
   containerAnimation.classList.add('flex');
-  containerAnimation.classList.add('flex');
+  containerAnimation.classList.add('animationOpacity');
 }
 
 function closeAnimation() {
-  containerAnimation.classList.add('deleteAnimation');
-
-  setTimeout(() => {
-    containerAnimation.classList.remove('flex');
-    containerAnimation.classList.add('none');    
-  }, 1001);
+  containerAnimation.classList.remove('flex');
+  containerAnimation.classList.remove('animationOpacity');
 }
-*/
+
 
 //pasiva
 //https://ddragon.leagueoflegends.com/cdn/14.2.1/img/passive/Anivia_P.png
